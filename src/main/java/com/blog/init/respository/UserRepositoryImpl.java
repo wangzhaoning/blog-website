@@ -46,5 +46,14 @@ public class UserRepositoryImpl implements UserRepository {
 		return new ArrayList<User>(this.userMap.values());
 		 
 	}
+	
+/*	public static void main(String[] args) {
+		User user=new User("1","2","3");
+		User user1=new User("2","2","3");
+		UserRepositoryImpl test=new UserRepositoryImpl();
+		test.saveUser(user);
+		test.saveUser(user1);
+		System.out.println(test.getUserList());
+	}*/
 
 }

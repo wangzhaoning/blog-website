@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+    xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<div th:replace="~{fragments/header :: header}"></div>
+<table border="1">
+ <thread>
+ 	<tr>
+ 		<td>ID</td>
+ 		<td>Name</td>
+ 		<td>Phone</td>
+ 		<td>Email</td>
+ 	</tr>
+ </thread>
+	 <tbody>
+	 <tr th:if="${userModel.userList.size()} eq 0">
+	 	<td colspan=3>>没有用户信息!</td>
+	 </tr>
+	 <tr th:each ="	user: ${userModel.userList}">
+	 <td th:text="${user.id}"></td>
+	  <td th:text="${user.name}"></td>
+	   <td th:text="${user.phone}"></td>
+	    <td th:text="${user.email}"></td>
+	    </tr>
+	</tbody>
+</table>
+<div th:replace="~{fragments/footer :: footer}"></div>
+</body>
+</html>
