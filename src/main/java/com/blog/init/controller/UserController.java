@@ -62,7 +62,7 @@ public class UserController {
 	 * @param model
 	 * @return
 	 */
-	@PostMapping("/form")
+	@PostMapping
 	public ModelAndView saveOrUpdateForm(User user){
 		userRepository.saveUser(user);
 		return new ModelAndView("redirect:/users");
