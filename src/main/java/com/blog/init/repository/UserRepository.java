@@ -1,4 +1,4 @@
-package com.blog.init.respository;
+package com.blog.init.repository;
 
 
 import org.springframework.data.repository.CrudRepository;

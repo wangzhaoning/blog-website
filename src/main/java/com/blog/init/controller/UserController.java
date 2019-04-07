@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.blog.init.domain.User;
-import com.blog.init.respository.UserRepository;
+import com.blog.init.repository.UserRepository;
 
 /**
  * ÓÃ»§¿ØÖÆÆ÷
