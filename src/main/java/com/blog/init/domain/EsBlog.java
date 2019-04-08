@@ -7,7 +7,6 @@ import org.springframework.data.elasticsearch.annotations.Document;
 
 import lombok.Data;
 
-@Data
 @Document(indexName="blog",type="blog")
 public class EsBlog implements Serializable {
 
@@ -25,5 +24,28 @@ public class EsBlog implements Serializable {
 			this.summary = summary;
 			this.content = content;
 		}
+		public String getTitle() {
+			return title;
+		}
+		public void setTitle(String title) {
+			this.title = title;
+		}
+		public String getSummary() {
+			return summary;
+		}
+		public void setSummary(String summary) {
+			this.summary = summary;
+		}
+		public String getContent() {
+			return content;
+		}
+		public void setContent(String content) {
+			this.content = content;
+		}
+		@Override
+		public String toString() {
+			return "EsBlog [title=" + title + ", summary=" + summary + ", content=" + content + "]";
+		}
+		
 		
 }
