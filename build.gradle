@@ -18,7 +18,7 @@ repositories {
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-integration'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
-	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf:3.0.2.RELEASE'
+	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
 	// 添加 Spring Data JPA 的依赖
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	// 添加 MySQL连接驱动 的依赖
@@ -27,7 +27,7 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-data-elasticsearch'
 	implementation 'net.java.dev.jna:jna'
 	// 添加   Thymeleaf Spring Security 依赖，与 Thymeleaf 版本一致都是 3.x
-	compile('org.thymeleaf.extras:thymeleaf-extras-springsecurity4:3.0.2.RELEASE')
+	compile('org.thymeleaf.extras:thymeleaf-extras-springsecurity5')
 	
 	// 添加  Spring Security 依赖
 	implementation 'org.springframework.boot:spring-boot-starter-security'

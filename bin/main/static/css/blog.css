@@ -18,6 +18,11 @@
     background-color: #fff;
 }
 
+.blog-user-style {
+    float: right;
+    margin-left:20px;
+}
+
 /* Index sidebar */
 .blog-avatar-50 {
     border-radius: 50%;

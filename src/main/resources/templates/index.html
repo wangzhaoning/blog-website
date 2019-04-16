@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
 <meta charset="UTF-8">
 <title>Home</title> 
@@ -26,8 +26,13 @@
 <div th:replace="~{fragments/header :: header}"></div>
 <!-- Page Content -->
 <div class="container blog-content-container">
-
-
+	<div sec:authorize="isAuthenticated()">
+		<p>已有用户登录</p>
+		<p>登录的用户为：<span sec:authentication="name"></span></p>
+	</div>
+	<div sec:authorize="isAnonymous()">
+		<p>未有用户登录</p>
+	</div>
 </div>
 <!-- /.container -->
 
