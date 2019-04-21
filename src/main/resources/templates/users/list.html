@@ -1,57 +1,84 @@
-<!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"
-    xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout">
-<head>
-<title>MaskingTime Blog</title>
-<!--  <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">  
-	<script src="https://cdn.staticfile.org/jquery/2.2.3/jquery.min.js"></script>
-	<script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="keywords" content="" />
-<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
-<!-- Custom Theme files -->
-<link href="../../css/bootstrap.css" type="text/css" rel="stylesheet" media="all">
-<link href="../../css/style.css" type="text/css" rel="stylesheet" media="all">
-<link href="../../css/font-awesome.css" rel="stylesheet">  <!-- font-awesome icons --> 
-<!-- //Custom Theme files -->
-<!-- js -->
-<script src="../../js/jquery-2.2.3.min.js"></script>   
-<!-- //js -->
-<!-- web-fonts -->
-<link href="http://fonts.googleapis.com/css?family=Roboto+Condensed:300,300i,400,400i,700,700i" rel="stylesheet">
-<link href="http://fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
-<!-- //web-fonts --> 
-</head>
-<body>
-<div th:replace="~{fragments/header :: header}"></div>
-<div class="container blog-content-container">
-	<h3 th:text = "${userModel.title}"></h3>
-	<div>
-		<a class="btn btn-default" href="users/form.html" th:href="@{/users/form}">创建用户</a>
+
+
+<div class="card-header bg-dark font-white">
+
+	<div class="input-group col-md-7 col-xl-6">
+
+		<input type="text" class="form-control" id="searchName"
+			placeholder="请输入搜索内容"> <span class="input-group-btn">
+			<button class="btn btn-secondary" type="button" id="searchNameBtn">
+				<i class="fa fa-search" aria-hidden="true"></i>
+			</button>
+		</span> <a class="btn btn-primary" data-toggle="modal"
+			data-target="#flipFlop" role="button" id="addUser"><i
+			class="fa fa-plus" aria-hidden="true"></i></a>
+
 	</div>
-	<table class="table table-condensed">
-	 <thread>
-	 	<tr>
-	 		<td>ID</td>
-	 		<td>Name</td>
-	 		<td>Phone</td>
-	 		<td>Email</td>
-	 	</tr>
-	 </thread>
-		 <tbody>
-		 <tr th:if="${userModel.userList.size()} eq 0">
-		 	<td colspan=3>>没有用户信息!</td>
-		 </tr>
-		 <tr th:each ="	user: ${userModel.userList}">
-		 <td th:text="${user.id}"></td>
-		  <td><a th:href="@{'/users/'+${user.id}}" th:text="${user.name}"></a></td>
-		   <td th:text="${user.phone}"></td>
-		    <td th:text="${user.email}"></td>
-		    </tr>
-		</tbody>
-	</table>
 </div>
-<div th:replace="~{fragments/footer :: footer}"></div>
-</body>
-</html>
+
+<div id="mainContainer" class="container">
+	<div id="mainContainerRepleace" class="row">
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th data-field="id">ID</th>
+					<th data-field="username">用户名</th>
+					<th data-field="name">姓名</th>
+					<th data-field="email">邮箱</th>
+					<th data-field="phone">手机号</th>
+					<th data-field="operation">操作</th>
+				</tr>
+			</thead>
+			<tbody>
+
+				<tr th:each="user : ${userModel.userList}">
+					<td th:text="${user.id}">1</td>
+					<td th:text="${user.username}">1</td>
+					<td th:text="${user.name}">wangzn</td>
+					<td th:text="${user.email}">wangzn</td>
+					<td>
+						<div>
+							<a class="blog-edit-user" data-toggle="modal"
+								data-target="#flipFlop" role="button"
+								data-th-attr="userId=${user.id}"> <i
+								class="fa fa-pencil-square-o" aria-hidden="true"></i>
+							</a> <a class="blog-delete-user" role="button"
+								data-th-attr="userId=${user.id}"> <i class="fa fa-times"
+								aria-hidden="true"></i>
+							</a>
+						</div>
+					</td>
+				</tr>
+
+			</tbody>
+
+		</table>
+
+	</div>
+</div>
+
+<!-- The modal -->
+<div class="modal fade" id="flipFlop" tabindex="-1" role="dialog"
+	aria-labelledby="modalLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h4 class="modal-title" id="modalLabel">新增/编辑</h4>
+				<button type="button" class="close" data-dismiss="modal"
+					aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+
+			</div>
+			<div class="modal-body" id="userFormContainer"></div>
+			<div class="modal-footer">
+				<button class="btn btn-primary" data-dismiss="modal" id="submitEdit">提交</button>
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- JavaScript -->
+<script src="../../js/users/main.js" th:src="@{/js/users/main.js}"></script>
+
