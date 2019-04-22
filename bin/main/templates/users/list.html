@@ -1,19 +1,19 @@
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+
 
 <div class="card-header bg-dark font-white">
 
 	<div class="input-group col-md-7 col-xl-6">
 
 		<input type="text" class="form-control" id="searchName"
-			placeholder="请输入搜索内容"> <span class="input-group-btn">
+			placeholder="请输入搜索内容"> 
+		<span class="input-group-btn">
 			<button class="btn btn-secondary" type="button" id="searchNameBtn">
 				<i class="fa fa-search" aria-hidden="true"></i>
 			</button>
-		</span> <a class="btn btn-primary" data-toggle="modal"
-			data-target="#flipFlop" role="button" id="addUser"><i
-			class="fa fa-plus" aria-hidden="true"></i></a>
+		</span> 
+		<a class="btn btn-primary" data-toggle="modal"
+			data-target="#flipFlop" role="button" id="addUser">
+			<i class="fa fa-plus" aria-hidden="true"></i></a>
 
 	</div>
 </div>
@@ -24,7 +24,7 @@
 			<thead>
 				<tr>
 					<th data-field="id">ID</th>
-					<th data-field="username">用户名</th>
+					<th data-field="username">账号</th>
 					<th data-field="name">姓名</th>
 					<th data-field="email">邮箱</th>
 					<th data-field="phone">手机号</th>
@@ -38,12 +38,13 @@
 					<td th:text="${user.username}">1</td>
 					<td th:text="${user.name}">wangzn</td>
 					<td th:text="${user.email}">wangzn</td>
+					<td th:text="${user.phone}">wangzn</td>
 					<td>
 						<div>
 							<a class="blog-edit-user" data-toggle="modal"
 								data-target="#flipFlop" role="button"
-								data-th-attr="userId=${user.id}"> <i
-								class="fa fa-pencil-square-o" aria-hidden="true"></i>
+								data-th-attr="userId=${user.id}"> 
+								<i class="fa fa-pencil-square-o" aria-hidden="true"></i>
 							</a> <a class="blog-delete-user" role="button"
 								data-th-attr="userId=${user.id}"> <i class="fa fa-times"
 								aria-hidden="true"></i>
@@ -83,4 +84,4 @@
 
 <!-- JavaScript -->
 <script src="../../js/users/main.js" th:src="@{/js/users/main.js}"></script>
-</html>
+

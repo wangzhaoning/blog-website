@@ -1,49 +1,33 @@
 <!DOCTYPE html>
-<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org"
-    xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout">
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-<link href="../../css/blog.css" th:href="@{/css/blog.css}" rel="stylesheet">
+    <meta charset="UTF-8">
 </head>
 <body>
-	<div th:fragment="footer">
-		<!-- footer -->
-	<div class="footer">
-		<div class="container">
-			<div class="col-md-4 w3layouts_footer_grid"> 
-				<div class="title">
-					<h2>Follow Me</h2> 
-				</div>
-				<div class="social-icon social_agileinfo">
-					<a href="#" class="social-button twitter"><i class="fa fa-twitter"></i></a>
-					<a href="#" class="social-button facebook"><i class="fa fa-facebook"></i></a> 
-					<a href="#" class="social-button google"><i class="fa fa-google-plus"></i></a> 
-					<a href="#" class="social-button dribbble"><i class="fa fa-dribbble"></i></a>
-					<a href="#" class="social-button skype"><i class="fa fa-skype"></i></a>
-				</div> 
-			</div>
-			<div class="col-md-8 w3layouts_footer_grid">
-				<form action="#" method="post">
-					<input type="email" name="Email" placeholder="Enter Your Email..." required="">
-					<input type="submit" value="Submit"> 
-					<div class="clearfix"> </div>
-				</form>
-				<ul class="w3l_footer_nav">
-					<li><a href="index.html">Home</a></li> 
-					<li><a href="about.html">About</a></li>
-					<li><a href="icons.html">Icons</a></li> 
-					<li><a href="portfolio.html">Portfolio</a></li>
-					<li><a href="contact.html">Contact Us</a></li>	
-				</ul> 
-			</div>
-			<div class="clearfix"> </div>
-		</div>
-	</div>
-	<div class="footer-w3copy w3-agileits">
-		<p>Copyright &copy; 2017.Company name All rights reserved.More Templates <a href="http://www.github.com/" target="_blank" title="">Github</a> - Collect from <a href="http://www.github.com/" title="Github" target="_blank">Github</a></p>
-	</div>
-	<!-- //footer -->   
-	</div>
+
+<footer class="blog-footer bg-inverse" data-th-fragment="footer" hidden="true">
+	<a id="goToTop" href="#">
+		<i class="fa fa-chevron-up fa-3x" aria-hidden="true"></i>
+	</a>
+    <div class="container">
+ 		<p class="m-0 text-center text-white">welcome to knowledge space !</p>
+    </div>
+	
+   	<!-- JavaScript -->
+    <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"/>
+    <script src="../../js/jquery.form.min.js" th:src="@{/js/jquery.form.min.js}"></script>
+    <script src="../../js/tether.min.js" th:src="@{/js/tether.min.js}"></script>
+    <script src="../../js/bootstrap.min.js" th:src="@{/js/bootstrap.min.js}"></script>
+    <script src="../../js/nprogress.js" th:src="@{/js/nprogress.js}"></script>
+    <script src="../../js/thinker-md.vendor.min.js" th:src="@{/js/thinker-md.vendor.min.js}"></script>
+    <script src="../../js/bootstrap-tagsinput.js" th:src="@{/js/jquery.tagsinput.min.js}"></script>
+    <script src="../../js/chosen.jquery.js" th:src="@{/js/chosen.jquery.js}"></script>
+    <script src="../../js/toastr.min.js" th:src="@{/js/toastr.min.js}"></script>
+    <script src="../../js/cropbox.js" th:src="@{/js/cropbox.js}"></script>
+    <script src="../../js/thymeleaf-bootstrap-paginator.js" th:src="@{/js/thymeleaf-bootstrap-paginator.js}"></script>
+    <script src="../../js/catalog-generator.js" th:src="@{/js/catalog-generator.js}"></script>
+    <script src="../../js/main.js" th:src="@{/js/main.js}"></script>
+ </footer>
+
 </body>
 </html>
