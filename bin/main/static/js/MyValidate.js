@@ -33,6 +33,23 @@ $(function() {
 				});
 			});
 			
+			$("#phone").blur(function() {
+				$.ajax({
+					type : 'POST',
+					url : 'register',
+					data : {
+						"phone" : $("#phone").val()
+					},
+					dataType : 'json',
+					success : function(r) {
+						$("#phoneTips").text(r.message);
+					},
+					error : function() {
+						$("#phoneTips").text("");
+					}
+				});
+			});
+			
 			$("#edit_email").blur(function() {
 				$.ajax({
 					type : 'POST',
@@ -47,6 +64,24 @@ $(function() {
 					},
 					error : function() {
 						$("#edit_emailTips").text("");
+					}
+				});
+			});
+			
+			$("#edit_phone").blur(function() {
+				$.ajax({
+					type : 'POST',
+					url : 'profile',
+					data : {
+						"id"	: $("#userId").val(),
+						"phone" : $("#edit_email").val()
+					},
+					dataType : 'json',
+					success : function(r) {
+						$("#edit_phoneTips").text(r.message);
+					},
+					error : function() {
+						$("#edit_phoneTips").text("");
 					}
 				});
 			});
@@ -138,6 +173,7 @@ $(function() {
 						minlength : "*密码长度不能小于 5 个字母"
 					},
 					email : "*请输入一个正确的邮箱",
+					phond : "*请输入一个正确的手机号"
 					name  : {
 						required : "*请输入姓名",
 						minlength : "*姓名最少2个字符",

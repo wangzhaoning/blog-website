@@ -15,6 +15,9 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import com.blog.init.domain.User;
@@ -26,7 +29,7 @@ import com.blog.init.repository.UserRepository;
  *
  */
 @Service
-public class UserServiceImpl implements UserService{
+public class UserServiceImpl implements UserService,UserDetailsService{
 	
 	@Autowired
 	private UserRepository userRepository;
@@ -57,8 +60,24 @@ public class UserServiceImpl implements UserService{
 
 	@Override
 	public List<User> listUsersByUsernames(Collection<String> usernames) {
-		// TODO Auto-generated method stub
-		return null;
+		return userRepository.findByUsernameIn(usernames);
+	}
+
+
+	/* (non-Javadoc)
+	 * @see com.blog.init.service.UserService#findByEmail(java.lang.String)
+	 */
+	@Override
+	public User findByEmail(String email) {
+		return userRepository.findByEmail(email);
+	}
+
+	/* (non-Javadoc)
+	 * @see org.springframework.security.core.userdetails.UserDetailsService#loadUserByUsername(java.lang.String)
+	 */
+	@Override
+	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+		return userRepository.findByUsername(username);
 	}
 
 	/* (non-Javadoc)
@@ -66,15 +85,7 @@ public class UserServiceImpl implements UserService{
 	 */
 	@Override
 	public User findByUsername(String username) {
-		return null;
-	}
-
-	/* (non-Javadoc)
-	 * @see com.blog.init.service.UserService#findByEmail(java.lang.String)
-	 */
-	@Override
-	public User findByEmail(String email) {
-		return null;
+		return (User) userRepository.findByUsername(username);
 	}
 
 }

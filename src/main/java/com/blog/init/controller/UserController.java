@@ -1,5 +1,6 @@
 package com.blog.init.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.validation.ConstraintViolationException;
@@ -19,7 +20,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.blog.init.domain.Authority;
 import com.blog.init.domain.User;
+import com.blog.init.service.AuthorityService;
 import com.blog.init.service.UserService;
 import com.blog.init.util.ConstraintViolationExceptionHandler;
 import com.blog.init.vo.Response;
@@ -33,6 +36,9 @@ public class UserController {
 	
 	@Autowired
 	private UserService userService;
+	
+	@Autowired
+	private AuthorityService authorityService;
 	
 	/**
 	 * 查询所有用户
@@ -74,7 +80,12 @@ public class UserController {
 	 * @return
 	 */
 	@PostMapping
-	public ResponseEntity<Response> saveOrUpdate(User user){
+	public ResponseEntity<Response> saveOrUpdate(User user,Integer authorityId){
+		
+		List<Authority> authorities=new ArrayList<Authority>();
+		authorities.add(authorityService.getAuthorityById(authorityId));
+		user.setAuthorities(authorities);
+
 		try{
 			userService.saveOrUpdateUser(user);
 		}catch(ConstraintViolationException e){

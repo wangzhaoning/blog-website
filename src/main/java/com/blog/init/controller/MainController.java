@@ -9,14 +9,19 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import com.blog.init.domain.Authority;
 import com.blog.init.domain.User;
+import com.blog.init.service.AuthorityService;
 import com.blog.init.service.UserService;
 import com.blog.init.util.MyException;
 
 @Controller
 public class MainController {
 	
-	private static final Long ROLE_USER_AUTHORITY_ID = 2L;
+	private static final Integer ROLE_USER_AUTHORITY_ID = 2;
+		
+	@Autowired
+	private AuthorityService authorityService;
 
 	@Autowired
 	private UserService userService;
@@ -62,6 +67,33 @@ public class MainController {
 	@GetMapping("/register")
 	public String register(){
 		return "register";
+	}
+	
+	/**
+	 * 注册用户
+	 * @param user
+	 * @param result
+	 * @param redirect
+	 * @return
+	 * @throws MyException 
+	 */
+	@PostMapping("/register")
+	public String registerUser(User user) throws MyException {
+		
+		if(userService.findByUsername(user.getUsername())!=null){
+			throw new MyException("*用户名已存在,请更换用户名");
+		}
+		
+		if(userService.findByEmail(user.getEmail())!=null){
+			throw new MyException("*邮箱已存在,请更换邮箱");
+		}
+		
+		List<Authority> authorities=new ArrayList<Authority>();
+		authorities.add(authorityService.getAuthorityById(ROLE_USER_AUTHORITY_ID));
+		user.setAuthorities(authorities);
+		
+		userService.saveOrUpdateUser(user);
+		return "redirect:/login";
 	}
 	
 	

@@ -29,7 +29,6 @@ label.error {
 }
 </style>
 <body>
-<div th:replace="~{fragments/header :: header}"></div>
 	<div class="container blog-content-container">
 
 		<form th:action="@{/register}" method="post" id="registerForm">
@@ -46,6 +45,11 @@ label.error {
 					type="email" class="form-control" id="email" name="email"
 					maxlength="50" placeholder="请输入邮箱">
 				<p class="tips" id="emailTips"></p>
+			</div>
+			<div class="form-group col-md-5">
+				<label for="phone" class="col-form-label">手机号</label> <input
+					type="text" class="form-control" id="phone" name="phone"
+					maxlength="50" placeholder="请输入手机号">
 			</div>
 			<div class="form-group col-md-5">
 				<label for="name" class="col-form-label">姓名</label> <input
