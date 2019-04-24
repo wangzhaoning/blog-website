@@ -41,7 +41,7 @@ public class User implements UserDetails{
 	
 	@NotEmpty(message = "手机号不能为空")
 	@Size(min=11,max=18)
-	@Column(nullable = false, length = 50, unique = true)
+	@Column(nullable = false, length = 50)
 	private String phone;
 	@NotEmpty(message = "邮箱不能为空")
 	@Size(max=50)
