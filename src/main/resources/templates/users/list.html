@@ -28,6 +28,7 @@
 					<th data-field="name">姓名</th>
 					<th data-field="email">邮箱</th>
 					<th data-field="phone">手机号</th>
+					<th data-field="authorities">权限</th>
 					<th data-field="operation">操作</th>
 				</tr>
 			</thead>
@@ -39,6 +40,7 @@
 					<td th:text="${user.name}">wangzn</td>
 					<td th:text="${user.email}">wangzn</td>
 					<td th:text="${user.phone}">wangzn</td>
+					<td th:text="${user.authorities}">wangzn</td>
 					<td>
 						<div>
 							<a class="blog-edit-user" data-toggle="modal"

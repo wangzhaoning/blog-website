@@ -1,5 +1,7 @@
 package com.blog.init.service;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,7 +16,7 @@ public class AuthorityServiceImpl implements AuthorityService{
 	private AuthorityRepository authorityRepository;
 	
 	@Override
-	public Authority getAuthorityById(Integer id) {
-		return authorityRepository.getOne(id);
+	public Optional<Authority> getAuthorityById(Integer id) {
+		return authorityRepository.findById(id);
 	}
 }

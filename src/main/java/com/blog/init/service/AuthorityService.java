@@ -1,5 +1,7 @@
 package com.blog.init.service;
 
+import java.util.Optional;
+
 import com.blog.init.domain.Authority;
 /**
  * 
@@ -8,6 +10,6 @@ import com.blog.init.domain.Authority;
  */
 public interface AuthorityService {
 	
-	public Authority getAuthorityById(Integer id);
+	public Optional<Authority> getAuthorityById(Integer id);
 	
 }

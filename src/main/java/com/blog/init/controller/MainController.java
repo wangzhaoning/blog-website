@@ -89,7 +89,7 @@ public class MainController {
 		}
 		
 		List<Authority> authorities=new ArrayList<Authority>();
-		authorities.add(authorityService.getAuthorityById(ROLE_USER_AUTHORITY_ID));
+		authorities.add(authorityService.getAuthorityById(ROLE_USER_AUTHORITY_ID).get());
 		user.setAuthorities(authorities);
 		
 		userService.saveOrUpdateUser(user);
