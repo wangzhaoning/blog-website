@@ -9,6 +9,7 @@ package com.blog.init.service;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.Optional;
 
 import javax.transaction.Transactional;
 
@@ -47,8 +48,8 @@ public class UserServiceImpl implements UserService,UserDetailsService{
 	}
 
 	@Override
-	public User getUserById(Integer id) {
-		return userRepository.getOne(id);
+	public Optional<User> getUserById(Integer id) {
+		return userRepository.findById(id);
 	}
 
 	@Override

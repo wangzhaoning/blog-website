@@ -2,6 +2,7 @@ package com.blog.init.service;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -33,7 +34,7 @@ public interface UserService {
 	 * @param user
 	 * @return
 	 */
-	User getUserById(Integer id);
+	Optional<User> getUserById(Integer id);
 	
 	/**
 	 * 根据用户名进行分页模糊查询

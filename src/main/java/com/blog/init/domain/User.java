@@ -124,11 +124,12 @@ public class User implements UserDetails{
 	protected User() {
 		
 	}
-	public User(String name, String phone, String email,String username) {
+	public User(String name, String password, String email,String username,String phone) {
 		this.name = name;
-		this.phone = phone;
 		this.email = email;
 		this.username=username;
+		this.password = password;
+		this.phone=phone;
 	}
 	public Integer getId() {
 		return id;

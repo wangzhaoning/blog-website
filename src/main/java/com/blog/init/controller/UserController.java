@@ -2,6 +2,7 @@ package com.blog.init.controller;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import javax.validation.ConstraintViolationException;
 
@@ -68,7 +69,7 @@ public class UserController {
 	 */
 	@GetMapping("/add")
 	public ModelAndView createForm(Model model) {
-		model.addAttribute("user", new User(null, null, null, null));
+		model.addAttribute("user", new User(null, null, null, null, null));
 		return new ModelAndView("users/add", "userModel", model);
 	}
 	
@@ -113,6 +114,20 @@ public class UserController {
 			return ResponseEntity.ok().body(new Response(false, e.getMessage()));
 		}
 		return ResponseEntity.ok().body(new Response(true, "处理成功"));
+	}
+	
+	/**
+	 * 获取修改用户的界面
+	 * 
+	 * @param id
+	 * @param model
+	 * @return
+	 */
+	@GetMapping(value = "edit/{id}")
+	public ModelAndView modifyForm(@PathVariable("id") Integer id, Model model) {
+		Optional<User> user = userService.getUserById(id);
+		model.addAttribute("user", user.get());
+		return new ModelAndView("users/edit", "userModel", model);
 	}
 
 }

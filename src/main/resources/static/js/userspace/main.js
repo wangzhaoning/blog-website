@@ -32,7 +32,7 @@ $(function() {
 	 */  
 	function convertBase64UrlToBlob(urlData){  
 	      
-	    var bytes=window.atob(urlData.split(',')[1]);        //去掉url的头，并转换为byte  
+	    var bytes=window.atob(urlData.split(',')[1]); //去掉url的头，并转换为byte  
 	      
 	    //处理异常,将ascii码小于0的转换为大于0  
 	    var ab = new ArrayBuffer(bytes.length);  
@@ -47,12 +47,12 @@ $(function() {
 	// 提交用户头像的图片数据
 	$("#submitEditAvatar").on("click", function () { 
 		var form = $('#avatarformid')[0];  
-	    var formData = new FormData(form);   //这里连带form里的其他参数也一起提交了,如果不需要提交其他参数可以直接FormData无参数的构造函数  
+	    var formData = new FormData(form);  
 	    var base64Codes = $(".cropImg > img").attr("src");
- 	    formData.append("file",convertBase64UrlToBlob(base64Codes));  //append函数的第一个参数是后台获取数据的参数名,和html标签的input的name属性功能相同  
+ 	    formData.append("file",convertBase64UrlToBlob(base64Codes)); 
 	    
  	    $.ajax({
-		    url: 'http://47.104.219.154:8081/upload',
+		    url: fileServerUrl,  // 文件服务器地址
 		    type: 'POST',
 		    cache: false,
 		    data: formData,
@@ -60,22 +60,29 @@ $(function() {
 		    contentType: false,
 		    success: function(data){
 		    	
-		    	var avatarUrl = data;				
+		    	var avatarUrl = data;
+		    	
+				// 获取 CSRF Token 
+				var csrfToken = $("meta[name='_csrf']").attr("content");
+				var csrfHeader = $("meta[name='_csrf_header']").attr("content");
 		    	// 保存头像更改到数据库
 				$.ajax({ 
 					 url: avatarApi, 
 					 type: 'POST',
 					 contentType: "application/json; charset=utf-8",
-					 data: JSON.stringify({"id":Number($("#userId").val()), "avatar":avatarUrl}),
-				
+					 data: JSON.stringify({"id":Number($("#userId").val()), 
+						 	"avatar":avatarUrl}),
+					 beforeSend: function(request) {
+		                 request.setRequestHeader(csrfHeader, csrfToken); // 添加  CSRF Token 
+		             },
 					 success: function(data){
 						 if (data.success) {
 							// 成功后，置换头像图片
 							 $(".blog-avatar").attr("src", data.avatarUrl);
-							 location.reload();
 						 } else {
 							 toastr.error("error!"+data.message);
-						 }	 
+						 }
+						 
 				     },
 				     error : function() {
 				    	 toastr.error("error!");
@@ -87,7 +94,4 @@ $(function() {
 		    }
 		})
 	});
- 
-
-	 
 });
