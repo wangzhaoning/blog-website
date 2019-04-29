@@ -1,5 +1,5 @@
 /*!
- * Bolg main JS.
+  * Bolg main JS.
  * 
  * @since: 1.0.0 2017/3/9
  * @author Way Lau <https://waylau.com>
@@ -7,7 +7,7 @@
 "use strict";
 //# sourceURL=main.js
  
-//DOM 加载完再执行
+// DOM 加载完再执行
 $(function() {
 
     var _pageSize; // 存储用于搜索
@@ -94,10 +94,14 @@ $(function() {
 
     // 删除用户
     $("#rightContainer").on("click",".blog-delete-user", function () { 
-
+    	var csrfToken=$("meta[name='_csrf']").attr("content");
+    	var csrfHeader=$("meta[name='_csrf_header']").attr("content");
         $.ajax({ 
              url: "/users/" + $(this).attr("userId") , 
              type: 'DELETE', 
+             beforeSend:function(request){
+            	 request.setRequestHeader(csrfHeader,csrfToken);
+             },
              success: function(data){
                  if (data.success) {
                      // 从新刷新主界面

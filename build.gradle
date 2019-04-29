@@ -25,9 +25,9 @@ dependencies {
 	implementation 'mysql:mysql-connector-java:8.0.15'
 	implementation 'org.projectlombok:lombok'
 	implementation 'org.springframework.boot:spring-boot-starter-data-elasticsearch'
-	implementation 'net.java.dev.jna:jna'
-	implementation 'org.apache.commons:commons-lang3:3.5'
-	// 添加   Thymeleaf Spring Security 依赖，与 Thymeleaf 版本一致都是 3.x
+	//implementation 'net.java.dev.jna:jna'
+	implementation 'org.apache.commons:commons-lang3:3.6'
+	// 添加   Thymeleaf Spring Security 依赖
 	compile('org.thymeleaf.extras:thymeleaf-extras-springsecurity5')
 	// 添加 Markdown parser 依赖
 	compile('es.nitaur.markdown:txtmark:0.16')

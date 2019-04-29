@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -106,8 +107,8 @@ public class UserController {
 	 * @param model
 	 * @return
 	 */
-	@DeleteMapping(value = "/{id}")
-	public ResponseEntity<Response> delete(@PathVariable("id") Integer id, Model model) {
+    @DeleteMapping("/{id}")
+	public ResponseEntity<Response> removeUser(@PathVariable("id") Integer id) {
 		try {
 			userService.removeUser(id);
 		} catch (Exception e) {
