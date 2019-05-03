@@ -136,10 +136,10 @@ public class UserspaceController {
 	@PostMapping("/{username}/avatar")
 	@PreAuthorize("authentication.name.equals(#username)")
 	public ResponseEntity<Response> saveAvatar(@PathVariable("username") String username, @RequestBody User user) {
-		String avatarUrl = user.getAvater();
+		String avatarUrl = user.getAvatar();
 
 		User originalUser = userService.getUserById(user.getId()).get();
-		originalUser.setAvater(avatarUrl);
+		originalUser.setAvatar(avatarUrl);
 		userService.saveOrUpdateUser(originalUser);
 
 		return ResponseEntity.ok().body(new Response(true, "处理成功", avatarUrl));

@@ -62,7 +62,7 @@ public class User implements UserDetails{
 	private String password;
 	
 	@Column(length = 200)
-	private String avater;
+	private String avatar;
 	
 	@ManyToMany(cascade = CascadeType.DETACH, fetch = FetchType.EAGER)
 	@JoinTable(name = "user_authority", joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"), 
@@ -116,11 +116,11 @@ public class User implements UserDetails{
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public String getAvater() {
-		return avater;
+	public String getAvatar() {
+		return avatar;
 	}
-	public void setAvater(String avater) {
-		this.avater = avater;
+	public void setAvatar(String avatar) {
+		this.avatar = avatar;
 	}
 	
 	protected User() {
@@ -170,6 +170,6 @@ public class User implements UserDetails{
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", name=" + name + ", phone=" + phone + ", email=" + email + ", username=" + username
-				+ ", password=" + password + ", avater=" + avater + "]";
+				+ ", password=" + password + ", avatar=" + avatar + "]";
 	}
 }
