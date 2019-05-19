@@ -1,10 +1,4 @@
-
-
 package com.blog.init.service;
-
-import static org.elasticsearch.index.query.QueryBuilders.matchAllQuery;
-import static org.elasticsearch.search.aggregations.AggregationBuilders.terms;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,6 +8,7 @@ import org.elasticsearch.search.SearchParseException;
 import org.elasticsearch.search.aggregations.Aggregations;
 import org.elasticsearch.search.aggregations.bucket.terms.StringTerms;
 import org.elasticsearch.search.aggregations.bucket.terms.Terms;
+import org.elasticsearch.search.fetch.subphase.highlight.HighlightBuilder.Order;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -30,7 +25,6 @@ import com.blog.init.domain.EsBlog;
 import com.blog.init.domain.User;
 import com.blog.init.repository.EsBlogRepository;
 import com.blog.init.vo.TagVO;
-import com.mysql.cj.x.protobuf.MysqlxCrud.Order;
 
 
 /**
@@ -127,7 +121,7 @@ public class EsBlogServiceImpl implements EsBlogService {
 		List<TagVO> list = new ArrayList<>();
 		
 		// 查询条件
-		SearchQuery searchQuery = new NativeSearchQueryBuilder().withQuery(matchAllQuery())
+		/*SearchQuery searchQuery = new NativeSearchQueryBuilder().withQuery(matchAllQuery())
 				.withSearchType(SearchType.QUERY_THEN_FETCH).withIndices("blog").withTypes("blog")
 				.addAggregation(terms("tags").field("tags")
 				.order(Order.count(false)).size(30)).build();
@@ -154,13 +148,13 @@ public class EsBlogServiceImpl implements EsBlogService {
 		for (StringTerms.Bucket actiontypeBucket : modelBucketIt) {
 			list.add(new TagVO(actiontypeBucket.getKeyAsString(), actiontypeBucket.getDocCount()));
 		}
-		
+		*/
 		return list;
 	}
 
 	@Override
 	public List<User> listTop12Users() {
-
+/*
 		List<String> usernamelist = new ArrayList<>();// 存储排序后的用户账号
 		
 		// 查询条件
@@ -208,6 +202,7 @@ public class EsBlogServiceImpl implements EsBlogService {
 			}
 		}
 		
-		return returnList;
+		return returnList;*/
+		return null;
 	}
 }

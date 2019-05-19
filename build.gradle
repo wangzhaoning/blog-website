@@ -31,7 +31,8 @@ dependencies {
 	compile('org.thymeleaf.extras:thymeleaf-extras-springsecurity5')
 	// 添加 Markdown parser 依赖
 	compile('es.nitaur.markdown:txtmark:0.16')
-	
+	// https://mvnrepository.com/artifact/com.google.protobuf/protobuf-java
+	compile group: 'com.google.protobuf', name: 'protobuf-java', version: '3.1.0'
 	// 添加  Spring Security 依赖
 	implementation 'org.springframework.boot:spring-boot-starter-security'
 	//runtime('com.h2database:h2:1.4.199')

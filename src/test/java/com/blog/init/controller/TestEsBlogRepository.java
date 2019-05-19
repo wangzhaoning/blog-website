@@ -25,10 +25,10 @@ public class TestEsBlogRepository{
 	@Before
 	public void init() {
 		esBlogRepository.deleteAll();
-		esBlogRepository.save(new EsBlog("wangzn","an excellent progreammer","he was graduated CUMT"));
-		esBlogRepository.save(new EsBlog("znwang","a good guy","he is want to become a musician"));
-		esBlogRepository.save(new EsBlog("znwang","a good guy","he is want to become a teacher"));
-		esBlogRepository.save(new EsBlog("qxy","a good gril","she is a musician"));
+//		esBlogRepository.save(new EsBlog("wangzn","an excellent progreammer","he was graduated CUMT"));
+//		esBlogRepository.save(new EsBlog("znwang","a good guy","he is want to become a musician"));
+//		esBlogRepository.save(new EsBlog("znwang","a good guy","he is want to become a teacher"));
+//		esBlogRepository.save(new EsBlog("qxy","a good gril","she is a musician"));
 	}
 	@Test
 	public void testfindDistinctByAll() {

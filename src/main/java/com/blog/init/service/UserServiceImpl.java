@@ -3,7 +3,7 @@
 * <p>Description: </p>  
 * <p>Copyright: Copyright (c) 2019</p>  
 * @author wangzn  
-* @date 2019年4月21日  
+* @date 2019锟斤拷4锟斤拷21锟斤拷  
 */  
 package com.blog.init.service;
 
@@ -25,7 +25,7 @@ import com.blog.init.domain.User;
 import com.blog.init.repository.UserRepository;
 
 /**
- * 用户服务实现
+ * 鐢ㄦ埛
  * @author wangzn
  *
  */

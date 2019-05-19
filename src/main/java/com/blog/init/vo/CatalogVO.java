@@ -1,7 +1,6 @@
 package com.blog.init.vo;
 
-
-import com.waylau.spring.boot.blog.domain.Catalog;
+import com.blog.init.domain.Catalog;
 
 /**
  * Catalog VO.
